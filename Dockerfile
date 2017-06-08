@@ -18,5 +18,7 @@ WORKDIR /home/
 
 COPY . /home/
 
-ENTRYPOINT exec Rscript /home/download-rasters.R \
-  && aws s3 cp /home/ s3://earthlab-ls-fire --exclude '*' --include 'BAECV*.tar.gz' --recursive
+RUN ["chmod", "+x", "/home/files-to-s3.sh"]
+
+ENTRYPOINT ["/home/files-to-s3.sh"]
+
