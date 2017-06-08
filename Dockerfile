@@ -19,5 +19,4 @@ WORKDIR /home/
 COPY . /home/
 
 ENTRYPOINT exec Rscript /home/download-rasters.R \
-  && aws s3 cp /home/ s3://earthlab-ls-fire --exclude '*' --include 'BAECV*.tar.gz'
-
+  && aws s3 cp /home/ s3://earthlab-ls-fire --exclude '*' --include 'BAECV*.tar.gz' --recursive
