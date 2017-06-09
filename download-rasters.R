@@ -30,9 +30,6 @@ file_lines <- gsub("HREF=\"/outgoing/baecv/BAECV_CONUS_v1_2017/", "",
 to_download <- paste0(prefix, file_lines)
 local_dest <- gsub(prefix, "", to_download)
 
-# TODO: expand to fetch all files
-to_download <- to_download[1]
-
 # iterate over the links to download each file
 for (i in seq_along(to_download)) {
   download.file(to_download[i], destfile = local_dest[i])
