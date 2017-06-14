@@ -4,6 +4,8 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ssh \
     libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
     man \
     less \
     vim \
@@ -12,7 +14,7 @@ RUN apt-get update \
   && pip install awscli \
   && apt-get clean
 
-RUN echo "install.packages('RCurl')" | R --slave 
+RUN echo "install.packages(c('RCurl', 'aws.s3'))" | R --slave 
 
 WORKDIR /home/
 
