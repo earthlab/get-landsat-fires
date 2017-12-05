@@ -4,7 +4,7 @@ library(aws.s3)
 
 # Fetching burn rasters ---------------------------------------------------
 # get and read the file listing from the usgs server
-prefix  <- 'https://rmgsc.cr.usgs.gov/outgoing/baecv/BAECV_CONUS_v1_2017/'
+prefix  <- 'https://rmgsc.cr.usgs.gov/outgoing/baecv/BAECV_CONUS_v1.1_2017/'
 download.file(prefix, destfile = 'listing.txt')
 out <- readLines('listing.txt')
 
@@ -25,7 +25,7 @@ file_lines <- file_lines[!grepl("To", file_lines)]
 # strip unneeded prefix & suffix from the links
 file_lines <- gsub(".*BAECV_CONUS_v1_2016/", replacement = "", file_lines)
 file_lines <- gsub(".tar.gz.*", ".tar.gz", file_lines)
-file_lines <- gsub("HREF=\"/outgoing/baecv/BAECV_CONUS_v1_2017/", "", 
+file_lines <- gsub("HREF=\"/outgoing/baecv/BAECV_CONUS_v1.1_2017/", "", 
                    file_lines)
 
 # paste the file names together with the https prefix to make complete links
